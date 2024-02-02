@@ -13,7 +13,8 @@ public class Contractor {
     private String symbol;
     private String name;
 
-    Contractor(){}
+    Contractor() {
+    }
 
     public Contractor(String symbol, String name) {
         this.symbol = symbol;
