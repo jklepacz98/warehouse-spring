@@ -25,6 +25,10 @@ public class Contractor {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getSymbol() {
         return symbol;
     }
@@ -40,4 +44,6 @@ public class Contractor {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
