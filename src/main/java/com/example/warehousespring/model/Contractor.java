@@ -44,6 +44,4 @@ public class Contractor {
     public void setName(String name) {
         this.name = name;
     }
-
-
 }
