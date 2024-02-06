@@ -7,13 +7,13 @@ import java.util.List;
 @Entity
 public class ReceiptDocument {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String symbol;
     @ManyToOne
     private Contractor contractor;
     //todo
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "receipt_document", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "receiptDocument", cascade = CascadeType.ALL)
     private List<DocumentItem> documentItemList;
 
     ReceiptDocument() {

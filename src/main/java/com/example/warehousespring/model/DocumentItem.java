@@ -1,17 +1,19 @@
 package com.example.warehousespring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
 public class DocumentItem {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String productName;
     private String unitOfMeasure;
     private Float amount;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "receipt_document_id")
+    @JsonIgnore
     private ReceiptDocument receiptDocument;
 
     public DocumentItem(String productName, String unitOfMeasure, Float amount, ReceiptDocument receiptDocument) {
