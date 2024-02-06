@@ -1,8 +1,6 @@
 package com.example.warehousespring.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class DocumentItem {
@@ -12,14 +10,18 @@ public class DocumentItem {
     private String productName;
     private String unitOfMeasure;
     private Float amount;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "receipt_document_id")
+    private ReceiptDocument receiptDocument;
 
-    DocumentItem() {
-    }
-
-    public DocumentItem(String productName, String unitOfMeasure, Float amount) {
+    public DocumentItem(String productName, String unitOfMeasure, Float amount, ReceiptDocument receiptDocument) {
         this.productName = productName;
         this.unitOfMeasure = unitOfMeasure;
         this.amount = amount;
+        this.receiptDocument = receiptDocument;
+    }
+
+    DocumentItem() {
     }
 
     public Long getId() {
@@ -52,5 +54,13 @@ public class DocumentItem {
 
     public void setAmount(Float amount) {
         this.amount = amount;
+    }
+
+    public ReceiptDocument getReceiptDocument() {
+        return receiptDocument;
+    }
+
+    public void setReceiptDocument(ReceiptDocument receiptDocument) {
+        this.receiptDocument = receiptDocument;
     }
 }
