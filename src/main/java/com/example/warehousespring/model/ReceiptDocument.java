@@ -19,7 +19,7 @@ public class ReceiptDocument {
     ReceiptDocument() {
     }
 
-    ReceiptDocument(String symbol, Contractor contractor, List<DocumentItem> documentItemList) {
+    public ReceiptDocument(String symbol, Contractor contractor, List<DocumentItem> documentItemList) {
         this.symbol = symbol;
         this.contractor = contractor;
         this.documentItemList = documentItemList;
