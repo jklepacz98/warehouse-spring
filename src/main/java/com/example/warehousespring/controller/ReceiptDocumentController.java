@@ -52,9 +52,4 @@ public class ReceiptDocumentController {
             return repository.save(newReceiptDocument);
         });
     }
-
-    @DeleteMapping("/receipt-document/{id}")
-    void deleteReceipt(@PathVariable Long id) {
-        repository.deleteById(id);
-    }
 }

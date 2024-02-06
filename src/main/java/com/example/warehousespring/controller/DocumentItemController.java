@@ -43,9 +43,4 @@ public class DocumentItemController {
             return repository.save(newDocumentItem);
         });
     }
-
-    @DeleteMapping("/document-item/{id}")
-    void deleteDocumentItem(@PathVariable Long id) {
-        repository.deleteById(id);
-    }
 }
