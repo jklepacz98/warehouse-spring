@@ -56,4 +56,14 @@ public class ReceiptDocument {
     public void setDocumentItemList(List<DocumentItem> documentItemList) {
         this.documentItemList = documentItemList;
     }
+
+    public void addDocumentItem(DocumentItem documentItem) {
+        documentItemList.add(documentItem);
+        documentItem.setReceiptDocument(this);
+    }
+
+    public void removeDocumentItem(DocumentItem documentItem) {
+        documentItemList.remove(documentItem);
+        documentItem.setReceiptDocument(null);
+    }
 }
