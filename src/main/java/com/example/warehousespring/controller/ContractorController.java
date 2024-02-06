@@ -43,9 +43,4 @@ public class ContractorController {
             return repository.save(newContractor);
         });
     }
-
-    @DeleteMapping("/contractor/{id}")
-    void deleteContractor(@PathVariable Long id) {
-        repository.deleteById(id);
-    }
 }
