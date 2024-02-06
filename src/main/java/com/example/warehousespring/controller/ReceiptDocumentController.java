@@ -1,5 +1,6 @@
 package com.example.warehousespring.controller;
 
+import com.example.warehousespring.exception.ReceiptDocumentNotFoundException;
 import com.example.warehousespring.model.ReceiptDocument;
 import com.example.warehousespring.repository.ReceiptDocumentRepository;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,11 @@ public class ReceiptDocumentController {
     @GetMapping("/receipt-document")
     List<ReceiptDocument> getAllReceiptDocuments() {
         return repository.findAll();
+    }
+
+    @GetMapping("/receipt-document/{id}")
+    ReceiptDocument getReceiptDocument(@PathVariable Long id) {
+        return repository.findById(id).orElseThrow(() -> new ReceiptDocumentNotFoundException(id));
     }
 
     @PostMapping("/receipt-document")
