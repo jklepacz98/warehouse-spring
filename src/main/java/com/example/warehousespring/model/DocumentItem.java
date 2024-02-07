@@ -1,7 +1,9 @@
 package com.example.warehousespring.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class DocumentItem {
@@ -11,16 +13,13 @@ public class DocumentItem {
     private String productName;
     private String unitOfMeasure;
     private Float amount;
-    @ManyToOne
-    @JoinColumn(name = "receipt_document_id")
-    @JsonIgnore
-    private ReceiptDocument receiptDocument;
+    private Long receiptDocumentId;
 
-    public DocumentItem(String productName, String unitOfMeasure, Float amount, ReceiptDocument receiptDocument) {
+    public DocumentItem(String productName, String unitOfMeasure, Float amount, Long receiptDocumentId) {
         this.productName = productName;
         this.unitOfMeasure = unitOfMeasure;
         this.amount = amount;
-        this.receiptDocument = receiptDocument;
+        this.receiptDocumentId = receiptDocumentId;
     }
 
     DocumentItem() {
@@ -58,11 +57,11 @@ public class DocumentItem {
         this.amount = amount;
     }
 
-    public ReceiptDocument getReceiptDocument() {
-        return receiptDocument;
+    public Long getReceiptDocumentId() {
+        return receiptDocumentId;
     }
 
-    public void setReceiptDocument(ReceiptDocument receiptDocument) {
-        this.receiptDocument = receiptDocument;
+    public void setReceiptDocumentId(Long receiptDocumentId) {
+        this.receiptDocumentId = receiptDocumentId;
     }
 }

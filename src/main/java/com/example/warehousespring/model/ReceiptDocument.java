@@ -12,9 +12,6 @@ public class ReceiptDocument {
     private String symbol;
     @ManyToOne
     private Contractor contractor;
-    //todo
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "receiptDocument", cascade = CascadeType.ALL)
-    private List<DocumentItem> documentItemList;
 
     ReceiptDocument() {
     }
@@ -22,7 +19,6 @@ public class ReceiptDocument {
     public ReceiptDocument(String symbol, Contractor contractor, List<DocumentItem> documentItemList) {
         this.symbol = symbol;
         this.contractor = contractor;
-        this.documentItemList = documentItemList;
     }
 
     public Long getId() {
@@ -47,23 +43,5 @@ public class ReceiptDocument {
 
     public void setContractor(Contractor contractor) {
         this.contractor = contractor;
-    }
-
-    public List<DocumentItem> getDocumentItemList() {
-        return documentItemList;
-    }
-
-    public void setDocumentItemList(List<DocumentItem> documentItemList) {
-        this.documentItemList = documentItemList;
-    }
-
-    public void addDocumentItem(DocumentItem documentItem) {
-        documentItemList.add(documentItem);
-        documentItem.setReceiptDocument(this);
-    }
-
-    public void removeDocumentItem(DocumentItem documentItem) {
-        documentItemList.remove(documentItem);
-        documentItem.setReceiptDocument(null);
     }
 }

@@ -28,9 +28,6 @@ public class ReceiptDocumentController {
 
     @PostMapping("/receipt-document")
     ReceiptDocument postReceiptDocument(@RequestBody ReceiptDocument receiptDocument) {
-        receiptDocument.getDocumentItemList().forEach(documentItem ->
-                documentItem.setReceiptDocument(receiptDocument)
-        );
         return repository.save(receiptDocument);
     }
 
@@ -39,17 +36,7 @@ public class ReceiptDocumentController {
         return repository.findById(id).map(receiptDocument -> {
             receiptDocument.setSymbol(newReceiptDocument.getSymbol());
             receiptDocument.setContractor(newReceiptDocument.getContractor());
-            receiptDocument.getDocumentItemList().clear();
-            newReceiptDocument.getDocumentItemList().forEach(documentItem -> {
-                documentItem.setReceiptDocument(receiptDocument);
-                receiptDocument.getDocumentItemList().add(documentItem);
-            });
             return repository.save(receiptDocument);
-        }).orElseGet(() -> {
-            newReceiptDocument.getDocumentItemList().forEach(documentItem ->
-                    documentItem.setReceiptDocument(newReceiptDocument)
-            );
-            return repository.save(newReceiptDocument);
-        });
+        }).orElseGet(() -> repository.save(newReceiptDocument));
     }
 }

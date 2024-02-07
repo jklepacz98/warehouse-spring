@@ -32,7 +32,7 @@ public class LoadDatabase {
             log.info("Preloading " + contractorRepository.save(contractor2));
             ReceiptDocument receiptDocument1 = new ReceiptDocument("symbol1", contractor1, Collections.emptyList());
             log.info("Preloading " + receiptDocumentRepository.save(receiptDocument1));
-            DocumentItem documentItem1 = new DocumentItem("productName1", "kg", 100.0F, receiptDocument1);
+            DocumentItem documentItem1 = new DocumentItem("productName1", "kg", 100.0F, receiptDocument1.getId());
             log.info("Preloading " + documentItemReposiotory.save(documentItem1));
         };
     }
