@@ -30,7 +30,6 @@ public class LoadDatabase {
             Contractor contractor2 = new Contractor("PWQ/4563", "Jan Kowalski");
             Contractor contractor3 = new Contractor("LDS/143", "Barbara Nowak");
             Contractor contractor4 = new Contractor("JGS/4583", "Małgorzata Bubel");
-            Contractor contractor5 = new Contractor("EDC/453", "Bożydar Kowalski");
             log.info("Preloading " + contractorRepository.save(contractor1));
             log.info("Preloading " + contractorRepository.save(contractor2));
             log.info("Preloading " + contractorRepository.save(contractor3));
